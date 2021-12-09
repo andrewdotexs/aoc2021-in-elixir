@@ -11,7 +11,7 @@ defmodule DayTwo do
     end
 
     def parse_input(data) do
-      magn = %{"forward" => 1, "down" => 1, "up" => -1}
+      magn = %{"down" => 1, "up" => -1}
 
       res = data
       |> String.split("\n")
@@ -23,7 +23,7 @@ defmodule DayTwo do
         #IO.puts "command: #{command} [#{command_magn}] <- #{value}"
         case command do
           "forward" ->
-            %DayTwo.Result{acc | f_tot: acc.f_tot + (value * command_magn)}
+            %DayTwo.Result{acc | f_tot: acc.f_tot + value}
           c when c == "down" or c == "up" ->
             %DayTwo.Result{acc | d_tot: acc.d_tot + (value * command_magn)}
         end
